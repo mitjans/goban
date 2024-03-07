@@ -414,7 +414,7 @@ export interface ServerToClient {
     [k: `game/${number}/latency`]: ServerToClient["game/:id/latency"];
 
     /** A move was made on a game */
-    [k: `game/${number}/move`]: (data: {
+    "game/:id/move": (data: {
         /** The game id */
         game_id: number;
         /** Move number the move was made from*/
@@ -422,6 +422,7 @@ export interface ServerToClient {
         /** Move string encoded move */
         move: AdHocPackedMove;
     }) => void;
+    [k: `game/${number}/move`]: ServerToClient["game/:id/move"];
     /** The phase has changed for the game */
     "game/:id/phase": (data: "play" | "stone removal" | "finished") => void;
     [k: `game/${number}/phase`]: ServerToClient["game/:id/phase"];
